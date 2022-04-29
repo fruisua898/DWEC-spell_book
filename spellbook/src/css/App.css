@@ -1,0 +1,37 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100%;
+    align-items: center;
+    align-content: space-around;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: rgba(73, 81, 96, 1); 
+    background-color: rgba(186, 198, 186, 1);   
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    border: 5px;
+    width: 40%;
+    height: 30vh;
+    border-style: solid;
+    border-width: 0.3;
+    margin-left: 5%;
+    padding: 2rem;
+}
+
+ .--box-desc {
+
+    margin-top: 5%;
+    width: 90%;   
+}

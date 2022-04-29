@@ -1,13 +1,18 @@
+import React from "react";
+import Description from "./components/Description";
+import Header from "./components/Header";
+import Jugador from "./components/Jugador";
+import Lista from "./components/Lista";
+import "./css/App.css";
+
 function App() {
   return (
-    <div className="App">
-      <header>
-       
-        <p>
-          Bienvenido a SpellBook
-        </p>
-      </header>
-    </div>
+    <main className="App">
+      <Header/>
+      <Jugador/>
+      <Lista/>
+      <Description/>
+    </main>
   );
 }
 
