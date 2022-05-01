@@ -1,13 +1,14 @@
 import React from 'react';
 
 
-const Description = () => {
+const Description = (props) => {
+    const {spellDesc} = props; //Deconstrucción
     return (
 
     <section className="--box-desc">
         <h1>Descripcion</h1>
-        <p>Nivel:</p>
-        <p>Escuela:</p>
+        <p>Nivel: {spellDesc.level_int}</p>
+        <p>Descripcion: {spellDesc.desc}</p>
         <p>Material:</p>
     </section>
 
