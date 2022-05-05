@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Jugador = () => {
+const SpellCaster = () => {
     return (
     <section>
         <h1>Lanzador de conjuros</h1>
@@ -10,4 +10,4 @@ const Jugador = () => {
     )
 }
 
-export default Jugador;
+export default SpellCaster;

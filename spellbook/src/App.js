@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import Description from "./components/Description";
 import Header from "./components/Header";
-import Jugador from "./components/Jugador";
+import SpellCaster from "./components/SpellCaster";
 import Lista from "./components/Lista";
 import Cargando from "./components/Cargando";
 import "./css/App.css";
 
-//COmponentes camelcase y props min
+//Componentes camelcase y props min
 
 function App() {
 
@@ -25,13 +24,13 @@ function App() {
     
     return <Cargando/>;
   }
+  
   return (
     <main className="App">
 
       <Header/>
-      <Jugador/>
+      <SpellCaster/>
       <Lista listaSpell={spells} setId={setIndex}/>
-      <Description spellDesc={spells[index]}/>
     </main>
   );
 }
