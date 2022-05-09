@@ -9,8 +9,7 @@ import "./css/App.css";
 
 function App() {
 
-  const [spells, setSpells] = useState([]);
-  const [index, setIndex] = useState(0); //Hook index
+  const [spells, setSpells] = useState([]);  
 
   useEffect(() => {
     fetch("https://api.open5e.com/spells/?ordering=level_int&limit=321")
@@ -18,19 +17,27 @@ function App() {
       .then (data =>setSpells(data.results))
   }, [])
 
-  
+
 
   if(spells.length === 0){
     
     return <Cargando/>;
   }
   
+  const filteredSpells = spells.filter((spell)=>{
+    if(spell.check){
+        return spell;
+    }
+  }
+  );
+  console.log(filteredSpells);
+
   return (
     <main className="App">
 
       <Header/>
-      <SpellCaster/>
-      <Lista listaSpell={spells} setId={setIndex}/>
+      <SpellCaster filteredSpells={filteredSpells}/>
+      <Lista listaSpell={spells} setSpells={setSpells} />
     </main>
   );
 }

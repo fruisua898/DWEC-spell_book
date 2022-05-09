@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Lista = (props) => {
 
+
+const Lista = (props) => {
+    const {listaSpell, setSpells} = props;
+
+    function handleCheck(value, id){
+        const newListaSpell = [...listaSpell];
+        newListaSpell[id].check = !value;
+        setSpells(newListaSpell);
+    }
+
+    console.log(props.listaSpell);    
     return (
         <section className="spellList">
             <h1>Lista</h1>
@@ -40,9 +50,9 @@ const Lista = (props) => {
 
                 {
                     props.listaSpell.map((spell, id) => {
-                        props.setId(id);
-                        console.log(id);
-                        return(<thead>
+
+                        
+                        return(<tbody key={id}>
   
                         <tr>
                             <td>
@@ -63,8 +73,10 @@ const Lista = (props) => {
                             <td>
 
                             </td>
+                    
                             <td>
-                                <input type="checkbox"></input> 
+                                <input type="checkbox" onClick={()=>handleCheck(spell.check, id)} value={spell.check || false}></input> 
+                                {/* Short circuit - Evitar tipado indeseado */}
                             </td>
                         </tr>
                         <tr className="desSpell">
@@ -75,7 +87,7 @@ const Lista = (props) => {
                                 </details>
                             </td>
                         </tr>
-                    </thead>)
+                    </tbody>)
                     })
 
 
