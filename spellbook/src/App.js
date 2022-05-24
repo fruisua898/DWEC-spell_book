@@ -1,43 +1,32 @@
-import React, {useState, useEffect} from "react";
+import React  from "react";
 import Header from "./components/Header";
-import SpellCaster from "./components/SpellCaster";
-import Lista from "./components/Lista";
-import Cargando from "./components/Cargando";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 import "./css/App.css";
 
 //Componentes camelcase y props min
 
 function App() {
 
-  const [spells, setSpells] = useState([]);  
-
-  useEffect(() => {
-    fetch("https://api.open5e.com/spells/?ordering=level_int&limit=321")
-      .then(response => response.json())
-      .then (data =>setSpells(data.results))
-  }, [])
-
-
-
-  if(spells.length === 0){
-    
-    return <Cargando/>;
-  }
-  
-  const filteredSpells = spells.filter((spell)=>{
-    if(spell.check){
-        return spell;
-    }
-  }
-  );
-  console.log(filteredSpells);
-
   return (
     <main className="App">
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path="/home" element={<Home/>}/>
 
-      <Header/>
-      <SpellCaster filteredSpells={filteredSpells}/>
-      <Lista listaSpell={spells} setSpells={setSpells} />
+          <Route path="/" element={<Home/>}/>
+
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+      </Router>
     </main>
   );
 }

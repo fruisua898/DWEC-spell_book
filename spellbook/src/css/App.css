@@ -6,15 +6,22 @@ main {
 header {
     width: 100%;
     align-items: center;
-    align-content: space-around;
-    height: 10vh;
+
+    height: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     color: rgba(73, 81, 96, 1); 
     background-color: rgba(186, 198, 186, 1);   
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+  header > span{
+      display: flex;
+      flex-direction: row; 
+      align-content: center;
+  }
+  header > span > a {
+      width: 45vw;
   }
 
   .spellList{
