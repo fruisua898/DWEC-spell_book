@@ -4,24 +4,25 @@ import 'firebase/auth';
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyDHFGFon40JdcW0WMxA1mpBEG_1H_eq4ns",
+  apiKey: "AIzaSyA0OKJGLxTqsi9tDJ2bVM7BYL3E2ldfWxM",
 
-  authDomain: "spellbook-a68cd.firebaseapp.com",
+  authDomain: "spellbook-79e9c.firebaseapp.com",
 
-  projectId: "spellbook-a68cd",
+  projectId: "spellbook-79e9c",
 
-  storageBucket: "spellbook-a68cd.appspot.com",
+  storageBucket: "spellbook-79e9c.appspot.com",
 
-  messagingSenderId: "676973349481",
+  messagingSenderId: "566294880235",
 
-  appId: "1:676973349481:web:2965bffc4d4f13189370f8"
+  appId: "1:566294880235:web:51e5798300edeb132703ae"
 
 };
 
 
+
 // Initialize Firebase
 
-const app = initializeApp(firebaseConfig);
+app.initializeApp(firebaseConfig);
 
 const db = app.firestore();
 const auth = app.auth();

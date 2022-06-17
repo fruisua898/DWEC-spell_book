@@ -1,7 +1,9 @@
-import React  from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import React, {useState, useEffect} from "react";
+import {db, auth} from './firebase';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,12 +15,27 @@ import "./css/App.css";
 
 //Componentes camelcase y props min
 
+
 function App() {
 
-  return (
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user){
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+  }, [])
+  
+  return user !== false ? (
+    
     <main className="App">
       <Router>
-        <Header/>
+        <Header firebaseUser={user}/>
         <Routes>
           <Route path="/home" element={<Home/>}/>
 
@@ -28,7 +45,9 @@ function App() {
         </Routes>
       </Router>
     </main>
-  );
+  ):(
+    <div>Cargando...</div>
+  )
 }
 
 export default App;

@@ -1,22 +1,23 @@
 import React from 'react';
 
-const SpellCaster = (props) => {
-    console.log("Spell: ",props.filteredSpells);
-    return (
-    <section>
-        <form>
-            <h1>Lanzador de conjuros</h1>
-            <label for="class">Clase: </label>
-            <input name="class" type="text"/>   
-            <label for="level">Nivel: </label>
-            <input name="level" type="text"/>
-        </form>
 
-        <table>
+const SpellCaster = (props) => {
+
+    const [spells, setSpell] = React.useState([])
+    const [spell, setSpells] = React.useState([])
+    const [hayCambios, setHayCambios] = React.useState(true)
+   
+    return (
+    <section className="spellcaster">
+        <form>
+            <h1>Conjuros</h1>
+            <table>
             <thead>
                 <tr>
-                    <td>Nivel</td>    
                     <td>Nombre</td>    
+                    <td>Rango</td>
+                    <td>Nivel</td> 
+                    <td>Escuela</td> 
                 </tr>
             </thead>
             {props.filteredSpells.map((spell, id) => {
@@ -28,7 +29,13 @@ const SpellCaster = (props) => {
                         {spell.name}
                     </td>
                     <td>
+                        {spell.range}
+                    </td>
+                    <td>
                         {spell.level_int}
+                    </td>
+                    <td>
+                        {spell.school}
                     </td>
 
                 </tr>
@@ -39,6 +46,12 @@ const SpellCaster = (props) => {
             }
             
         </table>
+
+
+            
+        </form>
+
+
     </section>
     )
 }

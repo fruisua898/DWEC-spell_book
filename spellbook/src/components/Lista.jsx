@@ -1,25 +1,22 @@
 import React from 'react';
-
-
-
+import {auth, db} from '../firebase'
 const Lista = (props) => {
+    const user = auth.currentUser;
     const {listaSpell, setSpells} = props;
 
-    function handleCheck(value, id){
+    function handleCheck(value, id){       
+
         const newListaSpell = [...listaSpell];
         newListaSpell[id].check = !value;
         setSpells(newListaSpell);
+        
     }
-
-    console.log(props.listaSpell);    
+  
     return (
         <section className="spellList">
             <h1>Lista</h1>
             <table>
-                <thead>
-                    <label for="busqueda">Busqueda</label>
-                    <input id="busqueda" type="search"/>
-                </thead>
+
                 <thead>
 
                 <tr className="tableheader">
@@ -40,12 +37,7 @@ const Lista = (props) => {
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td><button>+</button></td>
-                    <td><button>+</button></td>
-                    <td><button>+</button></td>
-                    <td></td>
-                </tr>
+
                 </thead>
 
                 {

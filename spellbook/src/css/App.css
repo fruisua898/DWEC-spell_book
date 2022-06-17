@@ -1,38 +1,68 @@
-main {
+body {
+    font-family: 'Poppins',sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(73, 81, 96, 1);
+    color: rgba(186, 198, 186, 1);
+    font-size: 1.3rem;
+}
+
+main > div{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+button {
+  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.logout{
+    background-color: rgba(73, 81, 96, 1);
+    margin-bottom: 2rem;
 }
 
 header {
-    width: 100%;
-    align-items: center;
-
+    width: 100%;  
     height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: rgba(73, 81, 96, 1); 
     background-color: rgba(186, 198, 186, 1);   
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  header > span{
-      display: flex;
-      flex-direction: row; 
-      align-content: center;
+
+  header > h1 {
+      width: auto;
   }
-  header > span > a {
-      width: 45vw;
+  header > span > a{
+        margin-right: 2rem;
   }
 
   .spellList{
       width: 60%;
   }
-  .--td-ontop{
-      display: flex;
-      align-self: flex-end;
-  }
+
+
+  .spellcaster{
+    padding: 1rem;
+    width: 30%;
+}
+
   section {
-    width: 35%;
+    padding: 1rem;
     overflow: scroll;
     border-radius: 1rem;
     border-style: solid;
@@ -64,4 +94,64 @@ details {
 
 tr {
     padding: 1rem;
+}
+
+
+
+.cargando {
+    width: 75%;
+    font-size: 5rem;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    height: 520px;
+    width: 400px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    padding: 10px 35px;
+    justify-content: center;
+
+}
+
+.form-login h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+.form-login > label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.form-login > input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(34, 211, 211, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.form-login > button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
 }
