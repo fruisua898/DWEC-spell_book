@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import Cargando from "./Cargando";
 import SpellCaster from "./SpellCaster";
 import Lista from "./Lista";
-import {db, auth} from "../firebase";
-import {Navigate, useNavigate} from 'react-router-dom'
+import {auth} from "../firebase";
+import {useNavigate} from 'react-router-dom'
 
 
 const Home = () => {
@@ -22,24 +22,15 @@ const Home = () => {
     }
   },[])
 
-  /*const filteredSpellsRef = useRef([]); //
-  
-  const checkSpells = spells => {
-    const data = db.collection("hechizos").doc(auth.currentUser.email).get()
-    //const arrayData = data.docs.map (doc => ({id:doc.id}))
-    console.log(data)
-    spells.map(() => {
-      
-    })
-  }
-  */
-
   const [spells, setSpells] = useState([]);  
 
   useEffect(() => {
     fetch("https://api.open5e.com/spells/?ordering=level_int&limit=321")
       .then(response => response.json())
-      .then (data =>setSpells(data.results))
+      .then (data =>{ 
+        const newSpells = data.results.map((spell, id) => ({...spell, id }));
+        setSpells(newSpells);
+      })
   },[])
 
     if(spells.length === 0){

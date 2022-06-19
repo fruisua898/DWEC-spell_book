@@ -1,25 +1,60 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {auth, db} from '../firebase'
+import firebase from 'firebase/app'
+
 const Lista = (props) => {
-    const user = auth.currentUser;
+
     const {listaSpell, setSpells} = props;
+    const [search, setSearch] = useState("");
 
-    function handleCheck(value, id){       
+    const user = auth.currentUser;
+    var path = db.collection("hechizos").doc(user.email); 
 
+
+    useEffect(() => {
+        path.get().then((doc) => {
+            const spellsIds = doc.data().id
+            const spellsChecks = listaSpell.map((spell, id) => (
+                spellsIds.includes(id)?{...spell, check:true}:spell
+            ))
+            console.log(spellsChecks)
+            setSpells([...spellsChecks])
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }, [])
+    
+    function handleCheck(value, id){      
         const newListaSpell = [...listaSpell];
+         
+        if (newListaSpell[id].check =!value){
+            
+            path.update({
+                id: firebase.firestore.FieldValue.arrayUnion(id)
+            });
+             
+         } else {
+
+            path.update({
+                id: firebase.firestore.FieldValue.arrayRemove(id)
+            });
+         }
         newListaSpell[id].check = !value;
         setSpells(newListaSpell);
         
-    }
-  
+        
+    }   
+    const filteredSpellsBySearch = listaSpell.filter(spell => spell.name.toLowerCase().includes(search.toLowerCase()));
     return (
         <section className="spellList">
             <h1>Lista</h1>
+            <input placeholder="Filter by name ..." type="search" value={search} onChange={ event => setSearch(event.target.value)}/>
             <table>
 
                 <thead>
-
+                
                 <tr className="tableheader">
+                    
                     <td>
                         Nombre
                     </td>
@@ -41,11 +76,11 @@ const Lista = (props) => {
                 </thead>
 
                 {
-                    props.listaSpell.map((spell, id) => {
+                    filteredSpellsBySearch.map((spell, id) => {
 
-                        
+                        console.log(spell.check, spell.name)
                         return(<tbody key={id}>
-  
+                        
                         <tr>
                             <td>
                                 {spell.name}
@@ -67,7 +102,7 @@ const Lista = (props) => {
                             </td>
                     
                             <td>
-                                <input type="checkbox" onClick={()=>handleCheck(spell.check, id)} value={spell.check || false}></input> 
+                                <input type="checkbox" onClick={()=>handleCheck(spell.check, spell.id)} checked={spell.check || false}></input> 
                                 {/* Short circuit - Evitar tipado indeseado */}
                             </td>
                         </tr>

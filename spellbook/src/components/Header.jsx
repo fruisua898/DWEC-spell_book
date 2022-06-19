@@ -1,13 +1,6 @@
 import React from 'react';
 import {auth} from '../firebase';
-import {
-    BrowserRouter as Router,
-    Navigate,
-    useNavigate,
-    Routes,
-    Route,
-    Link
-  } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const Header = (props) => {
@@ -28,20 +21,26 @@ const Header = (props) => {
         
 
     <header>
+        {user === null? 
+            (null
+                ):(
+            <button className="dark-grey"
+            onClick={() => logout()}>
+                Logout
+                </button>
+            )} 
         <h1>SpellBook</h1>
-        <span>   
-                    
+  
+
+            
                 {user === null? 
                 (null
                     ):(
-                <button className="logout"
-                onClick={() => logout()}>
-                    Cerrar Sesión
-                    </button>
+                <p>Bienvenido {user.email}</p>
                 )}
             
 
-        </span>
+
         
 
 

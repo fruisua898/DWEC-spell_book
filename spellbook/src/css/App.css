@@ -7,6 +7,32 @@ body {
     font-size: 1.3rem;
 }
 
+header {
+    width: 100%;  
+    min-height: 25vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(73, 81, 96, 1); 
+    background-color: rgba(186, 198, 186, 1);   
+
+  }
+
+  header > span {
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+
+  header > h1 {
+      padding: 0;
+      margin:0;
+      width: auto;
+  }
+
+
 main > div{
     display: flex;
     flex-direction: row;
@@ -16,7 +42,7 @@ main > div{
 button {
   
   border: none;
-  color: white;
+
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -26,42 +52,53 @@ button {
   cursor: pointer;
 }
 
-.logout{
+.dark-grey{
     background-color: rgba(73, 81, 96, 1);
+    color: rgba(186, 198, 186, 1);
     margin-bottom: 2rem;
 }
 
-header {
-    width: 100%;  
-    height: auto;
+.white-grey{
+    background-color:  rgba(186, 198, 186, 1);
+    color: rgba(73, 81, 96, 1);
+    margin-bottom: 2rem;
+}
+  
+.spellList{
+    width: 50%;
+}
+
+
+.spellcaster{
+    width: 40%;
+    padding: 1rem;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: rgba(73, 81, 96, 1); 
-    background-color: rgba(186, 198, 186, 1);   
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  header > h1 {
-      width: auto;
-  }
-  header > span > a{
-        margin-right: 2rem;
-  }
-
-  .spellList{
-      width: 60%;
-  }
-
-
-  .spellcaster{
-    padding: 1rem;
-    width: 30%;
+    border: 5px;
+    height: 60vh;
+}
+.spellcaster > table > tr{
+    border-collapse:separate; 
+    border-spacing: 0 1em;
+}
+.spellcaster > table > tr > td{
+    width: 10%;
 }
 
-  section {
+input[type=search]{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    background-color:rgba(73, 81, 96, 1);
+    color:rgba(186, 198, 186, 1);
+ }
+
+
+
+section {
+    font-size: 1rem;
+    margin-top: 1rem;
     padding: 1rem;
     overflow: scroll;
     border-radius: 1rem;
@@ -70,19 +107,7 @@ header {
     display: flex;
     flex-direction: column;
     border: 5px;
-    height: 70vh;
-}
-
- .--box-desc {
-
-    margin-top: 5%;
-    width: 90%;   
-}
-
-.descSpell{
-    justify-content: center;
-
-    display: inline-block;
+    height: 60vh;
 }
 
 details {
@@ -90,12 +115,6 @@ details {
     border-radius: 4px;
     padding: .5em, .5em 0;
 }
-
-
-tr {
-    padding: 1rem;
-}
-
 
 
 .cargando {
@@ -136,10 +155,10 @@ tr {
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(34, 211, 211, 0.07);
+    background-color: rgba(186, 198, 186, 1);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
+       margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
 }
@@ -147,8 +166,6 @@ tr {
 .form-login > button{
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
-    color: #080710;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;

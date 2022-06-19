@@ -62,15 +62,9 @@ const Login = () => {
                 uid:res.user.uid,
                 registrado:Date.now()
               })
-              await db.collection('hechizos').doc(res.email).set({
-                nombre: "",
-                rango:"",
-                nivel: 0,
-                escuela: "",
-                owner: {
-                        id:res.user.uid,
-                        email:res.user.email
-                        }
+              await db.collection('hechizos').doc(res.user.email).set({
+                    id: []
+
                 
               })
             setEmail("")
@@ -114,7 +108,6 @@ const Login = () => {
 
                         <input 
                             type="email" 
-                            className="form-control mb-2"
                             placeholder="Introduce el email"
                             onChange={e => setEmail(e.target.value)}
                             value={email}
@@ -122,20 +115,19 @@ const Login = () => {
 
                         <input 
                             type="password" 
-                            className="form-control mb-2"
                             placeholder="Introduce el password"
                             onChange={e => setPass(e.target.value)}
                             value={pass}
                         />
                         <button 
-                            className="btn btn-lg btn-dark w-100 mb-2"
+                            className="white-grey"
                         >     
                         { esRegistro? "Registrarse":"Login" }
                         </button>
                
 
                         <button 
-                            className="btn btn-sm btn-info w-100 mb-2"
+                            className="white-grey"
                             type="button"
                             onClick={() => setEsRegistro(!esRegistro)}
                         >            

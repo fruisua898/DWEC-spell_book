@@ -4,7 +4,6 @@ const Cargando = () => {
     return (
         <div className="cargando">
             <p>Cargando ...</p>
-            {/*<img src="/bg.png"></img>*/}
         </div>
     )
 }
