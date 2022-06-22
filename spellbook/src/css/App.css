@@ -113,7 +113,7 @@ section {
 details {
     border: 1px solid;
     border-radius: 4px;
-    padding: .5em, .5em 0;
+    padding: 12px;
 }
 
 
@@ -171,4 +171,18 @@ details {
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+@media (max-width: 940px) {
+   div > main > div {
+        flex-direction: column-reverse;
+    }
+    .spellcaster, .spellList {
+        width: 90vw;
+    }
+    .spellList{
+        font-size: 0.8rem;
+    }
+  
 }
